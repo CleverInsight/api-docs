@@ -161,7 +161,7 @@ const Editor = () => {
                         </div>
                     </div>
                 </div>
-                { mode=='visual' ? <Collapse data={data} /> : <CodeEditorLayout updateData={updateData} code={data}/> }
+                { mode==='visual' ? <Collapse data={data} /> : <CodeEditorLayout updateData={updateData} code={data}/> }
             </div>
         </>
     )
