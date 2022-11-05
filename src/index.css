@@ -137,6 +137,7 @@ a:focus {
   position: absolute;
   padding: 15px;
   top: 100px;
+  padding-left: 30px;
 }
 
 #content-wrapper section {
@@ -460,4 +461,13 @@ textarea {
 }
 .api-name {
   margin-left: 20px;
+}
+
+.base-url {
+  font-family: monospace;
+  color: black;
+  font-weight: bolder;
+  border: 1px solid grey;
+  padding: 2px 4px;
+  background-color: #f8f4e2;
 }

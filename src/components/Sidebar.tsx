@@ -9,7 +9,7 @@ const Sidebar = (props:any) => {
             </div>
             <ul className="sidebar-nav">
             { props.items.map((item:string, i:number) => {
-                return <li>
+                return <li key={i}>
                     <a href={`#${item}`}><i className="bi bi-person-fill"></i>{ item.toUpperCase() }</a>
                 </li>
             })}

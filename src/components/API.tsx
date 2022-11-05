@@ -1,16 +1,20 @@
 import React, {useState} from "react";
 
 const API = (props: any) => {
-    const [hide, setHide] = useState(true)
+    const [hide, setHide] = useState(true);
+
+    const copy_clipboard = (e:any) => {
+    
+        setHide(hide ? false : true)
+    }
 
     return <>
-        <div className={`card ${props.data.method.toLowerCase()}`} onClick={(e) => setHide(hide ? false : true)}>
+        <div className={`card ${props.data.method.toLowerCase()}`}>
             <div className="card-header" data-toggle="collapse"  aria-expanded="true">
             
                 <div className="title">
-                    
-                    <span className="method">{ props.data.method }</span>
-                    <span className="url">{ props.data.path }</span>
+                    <span className="method" onClick={(e) => setHide(hide ? false : true)}>{ props.data.method }</span>
+                    <span className="url" onClick={(e) => copy_clipboard(e.target)}>{ props.data.path }</span>
                     <span className="api-name"><i> { props.data.name }</i></span>
                 </div>
                 
@@ -21,7 +25,7 @@ const API = (props: any) => {
             <div className={hide ? 'collapse hide': 'collapse show'} data-parent="#userAccordion">
                 <div className="card-body">
                 <div className="descr">
-                    <p><b>Name:</b> { props.data.name }</p>
+                    <p className="base-url">{ `${props.baseUrl}${props.data.path}` }</p>
                     <span>Description:</span> {props.data.description}.
                 </div>
                 <div className="bdy-cnt">

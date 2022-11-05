@@ -10,11 +10,11 @@ const Collapse = (props:any) => {
             
             <div className="col-lg-12">
             { Object.keys(props.data).map((section, i) => {
-                return <section id={section.toLowerCase()}>
+                return <section id={section.toLowerCase()} key={i}>
                         <h3>{ section.toUpperCase() }</h3>
                         <div className="accordion" id="userAccordion">
                             { props.data[section].map((api:any, index:any) => {
-                                return <API key={index} data={api} />
+                                return <API key={index} data={api} baseUrl={props.baseUrl}/>
                             })}
                         </div>
                     </section>

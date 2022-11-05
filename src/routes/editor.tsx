@@ -145,6 +145,7 @@ const Editor = () => {
         }]
     })
     const [mode, setMode] = useState("visual");
+    const [baseUrl, setBaseUrl] = useState("https://api.cleverinsight.co");
 
     const updateData = (data:any) => {
         setData(JSON.parse(data));
@@ -163,7 +164,7 @@ const Editor = () => {
                         </div>
                     </div>
                 </div>
-                { mode==='visual' ? <Collapse data={data} /> : <CodeEditorLayout updateData={updateData} code={data}/> }
+                { mode==='visual' ? <Collapse data={data} baseUrl={baseUrl} /> : <CodeEditorLayout updateData={updateData} code={data}/> }
             </div>
         </>
     )
