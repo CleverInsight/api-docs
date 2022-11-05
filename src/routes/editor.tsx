@@ -5,99 +5,101 @@ import Sidebar from "../components/Sidebar";
 import CodeEditorLayout from "../components/CodeEditorLayout";
 
 const Editor = () => {
-    const [data, setData] = useState([
-        {
-            "method": "GET",
-            "name": "home",
-            "path": "/",
-            "description": "Return the home landing page for the Identity Provider Services",
-            "payload": {},
-            "repsonse": "html"
-        },
-        {
-            "method": "POST",
-            "name": "create_user",
-            "path": "/v1/account/create",
-            "description": "Create a User account, and associate it with organization, roles and access controls",
-            "middleware": ["authenticated", "permission_granted", "is_admin"],
-            "payload": {
-                "email": "unique",
-                "password": "hash/salt of original password",
-                "auth_key": "GUID of the current user email",
-                "auth_secret": "64 char length random string"
+    const [data, setData] = useState({
+        "user": [
+            {
+                "method": "GET",
+                "name": "home",
+                "path": "/",
+                "description": "Return the home landing page for the Identity Provider Services",
+                "payload": {},
+                "repsonse": "html"
             },
-            "response": {
-                "id":1,
-                "email":"bastinrobins@gmail.com",
-                "password":"zdsadsada",
-                "auth_key":"asdasdas090909dsa",
-                "auth_secret":"asadsadadasdasda",
-                "token":"",
-                "createdAt":"2022-10-18T06:23:33.879Z",
-                "updatedAt":"2022-10-18T06:23:33.879Z"
-            }
-        },
-        {
-            "method": "POST",
-            "name": "login_user",
-            "path": "/v1/account/login",
-            "description": "Login into the identity service using the given email and password, if not valid return error message",
-            "payload": {
-                "email": "unique",
-                "password": "hash/salt of original password"
-            },
-            "response": {"id":1,
-                "email":"bastinrobins@gmail.com",
-                "profile": {
-                    "fname": "Bastin",
-                    "lname": "Robin",
-                    "mobile": "8989898989898",
-                    "created_at": "",
-                    "updated_at": ""
+            {
+                "method": "POST",
+                "name": "create_user",
+                "path": "/v1/account/create",
+                "description": "Create a User account, and associate it with organization, roles and access controls",
+                "middleware": ["authenticated", "permission_granted", "is_admin"],
+                "payload": {
+                    "email": "unique",
+                    "password": "hash/salt of original password",
+                    "auth_key": "GUID of the current user email",
+                    "auth_secret": "64 char length random string"
                 },
-                "auth_key":"asdasdas090909dsa",
-                "auth_secret":"asadsadadasdasda",
-                "token":"Bearer sadasd009-090--09-90-90-9-010-9-"
-            }
-    
-        },
-        {
-            "method": "GET",
-            "name": "List all roles",
-            "path": "/v1/roles/",
-            "description": "Returns the list of all roles record available",
-            "middleware": ["authenticated", "permission_granted"],
-            "payload": {},
-            "response": [
-                {
-                    "id": 1,
-                    "name": "",
-                    "created_at": "",
-                    "updated_at": ""
-                },
-                {
-                    "id": 2,
-                    "name": "",
-                    "created_at": "",
-                    "updated_at": ""
+                "response": {
+                    "id":1,
+                    "email":"bastinrobins@gmail.com",
+                    "password":"zdsadsada",
+                    "auth_key":"asdasdas090909dsa",
+                    "auth_secret":"asadsadadasdasda",
+                    "token":"",
+                    "createdAt":"2022-10-18T06:23:33.879Z",
+                    "updatedAt":"2022-10-18T06:23:33.879Z"
                 }
-            ]
-        },
-        {
-            "method": "GET",
-            "name": "Get a single role record",
-            "path": "/v1/roles/:roleId",
-            "description": "Returns role with the given `:roleId`",
-            "middleware": ["authenticated", "permission_granted"],
-            "payload": {},
-            "response": {
-                    "id": 1,
-                    "name": "",
-                    "created_at": "",
-                    "updated_at": ""
-            }   
-        },
-        {
+            },
+            {
+                "method": "POST",
+                "name": "login_user",
+                "path": "/v1/account/login",
+                "description": "Login into the identity service using the given email and password, if not valid return error message",
+                "payload": {
+                    "email": "unique",
+                    "password": "hash/salt of original password"
+                },
+                "response": {"id":1,
+                    "email":"bastinrobins@gmail.com",
+                    "profile": {
+                        "fname": "Bastin",
+                        "lname": "Robin",
+                        "mobile": "8989898989898",
+                        "created_at": "",
+                        "updated_at": ""
+                    },
+                    "auth_key":"asdasdas090909dsa",
+                    "auth_secret":"asadsadadasdasda",
+                    "token":"Bearer sadasd009-090--09-90-90-9-010-9-"
+                }
+        
+            },
+            {
+                "method": "GET",
+                "name": "List all roles",
+                "path": "/v1/roles/",
+                "description": "Returns the list of all roles record available",
+                "middleware": ["authenticated", "permission_granted"],
+                "payload": {},
+                "response": [
+                    {
+                        "id": 1,
+                        "name": "",
+                        "created_at": "",
+                        "updated_at": ""
+                    },
+                    {
+                        "id": 2,
+                        "name": "",
+                        "created_at": "",
+                        "updated_at": ""
+                    }
+                ]
+            },
+            {
+                "method": "GET",
+                "name": "Get a single role record",
+                "path": "/v1/roles/:roleId",
+                "description": "Returns role with the given `:roleId`",
+                "middleware": ["authenticated", "permission_granted"],
+                "payload": {},
+                "response": {
+                        "id": 1,
+                        "name": "",
+                        "created_at": "",
+                        "updated_at": ""
+                }   
+            }
+        ],
+        "role": [{
             "method": "POST",
             "name": "Create a new role",
             "path": "/v1/roles/",
@@ -140,8 +142,8 @@ const Editor = () => {
             "response": {
                     "message": "deleted successfully | already linked to records in access table"
             }   
-        },
-    ])
+        }]
+    })
     const [mode, setMode] = useState("visual");
 
     const updateData = (data:any) => {
@@ -151,7 +153,7 @@ const Editor = () => {
     return (
         <>
             <div id="wrapper">
-                <Sidebar />
+                <Sidebar items={ Object.keys(data) }/>
                 <Header />
                 <div className="row">
                     <div className="col-lg-12">
