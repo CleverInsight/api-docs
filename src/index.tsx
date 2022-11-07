@@ -16,7 +16,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <Router>
    <Routes>
-      <Route path="/" element={<App />}></Route>
+      <Route path="/" element={<Editor />}></Route>
       <Route path="/editor" element={<Editor />}></Route>
     </Routes>
   </Router>  
